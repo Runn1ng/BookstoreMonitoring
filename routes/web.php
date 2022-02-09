@@ -1,5 +1,7 @@
 <?php
 
+use App\Customer;
+use App\OrderBooks;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/stat', function() {
+    return view('stat', ['users' => count(Customer::all()), 'orders' => count(OrderBooks::all())]);
 });
 
 Auth::routes();
